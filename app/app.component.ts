@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<nav-bar></nav-bar>
-<div class="row">
-    <div>
+<div class="container">
+    <nav-bar></nav-bar>
+    
         <router-outlet></router-outlet>
-    </div>
+    
 </div>
 
 `
 })
-export class AppComponent { }
+export class AppComponent {
+  private viewContainerRef: ViewContainerRef;
+  public constructor(viewContainerRef:ViewContainerRef) {
+
+    this.viewContainerRef = viewContainerRef;
+  }
+}

@@ -8,17 +8,20 @@ import {AboutComponent} from "./pages/About/about.component";
 import {HistoryComponent} from "./pages/History/history.component";
 import {HttpModule} from "@angular/http";
 import {TodoListService} from "./pages/ToDoLists/todo-lists.service";
+import {Modal} from 'fuel-ui/fuel-ui';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 
 @NgModule({
-  imports:      [ BrowserModule, routing, HttpModule],
+  imports:      [ BrowserModule, routing, HttpModule, FormsModule, ReactiveFormsModule],
   declarations: [
     AppComponent,
     NavbarComponent,
     ToDoListsComponent,
     AboutComponent,
     HistoryComponent,
-
+    Modal
 
   ],
 
@@ -26,6 +29,7 @@ import {TodoListService} from "./pages/ToDoLists/todo-lists.service";
     appRoutingProviders,
     TodoListService
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

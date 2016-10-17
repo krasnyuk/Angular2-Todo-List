@@ -10,14 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n<nav-bar></nav-bar>\n<div class=\"row\">\n    <div>\n        <router-outlet></router-outlet>\n    </div>\n</div>\n\n"
+            template: "\n<div class=\"container\">\n    <nav-bar></nav-bar>\n    \n        <router-outlet></router-outlet>\n    \n</div>\n\n"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ViewContainerRef])
     ], AppComponent);
     return AppComponent;
 }());

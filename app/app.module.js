@@ -18,23 +18,27 @@ var about_component_1 = require("./pages/About/about.component");
 var history_component_1 = require("./pages/History/history.component");
 var http_1 = require("@angular/http");
 var todo_lists_service_1 = require("./pages/ToDoLists/todo-lists.service");
+var fuel_ui_1 = require('fuel-ui/fuel-ui');
+var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, http_1.HttpModule],
+            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, http_1.HttpModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
             declarations: [
                 app_component_1.AppComponent,
                 navbar_component_1.NavbarComponent,
                 todo_lists_component_1.ToDoListsComponent,
                 about_component_1.AboutComponent,
                 history_component_1.HistoryComponent,
+                fuel_ui_1.Modal
             ],
             providers: [
                 app_routing_1.appRoutingProviders,
                 todo_lists_service_1.TodoListService
             ],
+            schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

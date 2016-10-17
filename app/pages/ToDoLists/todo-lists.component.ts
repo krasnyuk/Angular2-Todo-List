@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import { Http, Response} from '@angular/http';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import {TodoListService} from "./todo-lists.service";
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 class TodoList {
     Id: number;
@@ -15,26 +14,33 @@ class TodoList {
 @Component({
     selector: 'to-do-lists',
     templateUrl: 'app/pages/ToDoLists/todo-lists.template.html',
-    style: ``
+    styleUrls: ['app/pages/ToDoLists/todo-lists.css']
 
 })
 export class ToDoListsComponent implements OnInit {
-    todos: TodoList[]=[];
+    todos: TodoList[] = [];
+    addListForm: FormGroup;
+    submitted = false;
+    active = true;
 
-    constructor (private http: Http, private toDoListService: TodoListService) {}
+    constructor(fb: FormBuilder, private toDoListService: TodoListService) {
+        this.addListForm = fb.group({
+            Title: ["", Validators.required],
+            Author: ["", Validators.required],
+            Date: ["", Validators.required],
+        });
+
+    }
+
 
     ngOnInit() {
         //MOCK-SERVICE DATA
         this.todos = this.toDoListService.getToDoLists();
     }
-
-    // getLists() {
-    //     this._getJSON('https://localhost:3000/lists.json')
-    //         .subscribe(json => this.todos = json.result);
-    // }
-    //
-    // _getJSON(url: string): Observable<any> {
-    //     return this.http.get(url)
-    //         .map((res: Response) => res.json());
-    // }
+    onClose() {
+        console.log("Modal has been closed!");
+    }
+    onOpen() {
+        console.log("Modal has been opened!");
+    }
 }
